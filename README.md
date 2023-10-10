@@ -61,3 +61,9 @@ Además, modificaría la tabla awto_trip agregando el siguiente campo:
   - total_discount: campo numérico (decimal) que contiene la suma de los valores de descuento de los cupones utilizados en el viaje
 
 Esta estrategia permitiría mantener ordenada la información relacionada con el uso del cupón, ya que relaciona la información del viaje con el usuario (con lo que se puede obtener la fecha cuando un usuario usó el cupón, mirando la fecha del viaje) y permite también registrar los cupones que ha ido acumulando un usuario en la tabla awto_cupon_usuario. Suponiendo que la forma de conceder cupones a los usuarios se basa en su comportamiento (cantidad de viajes totales, total de kilómetros, antigüedad del usuario, etc), se debería implementar un script automático que realice un barrido completo del historial de cada usuario y a medida que encuentre un usuario que cumple con algún criterio que le hace merecer un cupón, se va agregando la información de ese cupón para ese usuario en la tabla awto_cupon_usuario para que sea utilizado posteriormente.
+
+Finalmente, les comento que el script lo creé íntegramente "a mano" sin utilizar herramientas de asistencia de código.
+
+Nuevamente, les agradezco por la oportunidad de participar en este proceso de selección.
+
+Saludos!
