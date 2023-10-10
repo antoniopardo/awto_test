@@ -3,7 +3,7 @@ Resolucion de problema para cargo Ingeniero de Datos
 ----------------------------------------------------
 
 Tome la decision de crear 2 tablas para cargar los datos que se obtienen del archivo CSV (trip.csv):
-- Tabla awto_user : Tabla con información del usuario/cliente que contrató el servicio de Awto. Contiene 3 columnas:
+  - Tabla awto_user : Tabla con información del usuario/cliente que contrató el servicio de Awto. Contiene 3 columnas:
   - user_id : campo numérico que contiene el identificador interno del usuario
   - name_user: campo de texto que contiene el nombre del usuario
   - rut_user: campo de texto (para que pueda almacenar los rut con dígito verificador 'K') que contiene el Rut del usuario
