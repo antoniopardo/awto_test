@@ -2,7 +2,9 @@
 Resolucion de problema para cargo Ingeniero de Datos
 ----------------------------------------------------
 
-Tome la decision de crear 2 tablas para cargar los datos que se obtienen del archivo CSV (trip.csv):
+Al crear la base de datos awto, la asocié al usuario awto con clave 4wt0 para evitar utilizar el usuario por defecto (postgres).
+
+Para la resolución del ejercicio tomé la decision de crear 2 tablas para cargar los datos que se obtienen del archivo CSV (trip.csv):
   - Tabla awto_user : Tabla con información del usuario/cliente que contrató el servicio de Awto. Contiene 3 columnas:
     - user_id : campo numérico que contiene el identificador interno del usuario
     - name_user: campo de texto que contiene el nombre del usuario
