@@ -10,21 +10,21 @@ Tome la decision de crear 2 tablas para cargar los datos que se obtienen del arc
   - Tabla awto_trip : Tabla con información de cada viaje. Contiene 17 columnas:
     - trip_id: campo numérico que contiene el identificador interno de cada viaje
     - vehicle_id: campo numérico que contiene el identificador interno del vehículo utilizado en el viaje
-      c.- booking_time: campo de fecha que contiene la información de la fecha y hora cuando se realizó la reserva del vehículo
-      d.- start_time: campo de fecha que contiene la información de la fecha y hora cuando se inició el viaje
-      e.- end_time: campo de fecha que contiene la información de la fecha y hora cuando se terminó el viaje
-      f.- status_id: campo numérico que contiene el identificador interno equivalente al estado del viaje
-      g.- travel_dist: campo numérico que contiene la distancia que recorrió el vehículo durante el viaje. *Nota* se debe normalizar la unidad usada (Kilómetros o metros) para evitar problemas de consistencia en la generación del resumen diario
-      h.- membership_id: campo numérico que contiene el identificador de membresía que posee el usuario al momento de realizar el viaje. *Nota* No lo incluí en la tabla de usuario, debido a que un usuario puede cambiar de tipo de membresía entre un viaje y otro
-      i.- price_amount: campo numérico (decimal) que contiene el valor del viaje sin impuestos
-      j.- price_tax: campo numérico (decimal) que contiene el valor de los impuestos asociados al viaje
-      k.- price_total: campo numérico (decimal) que contiene el valor total del viaje (incluyendo impuestos)
-      l.- start_lat: campo de punto flotante que contiene el valor de la latitud de la coordenada donde se inició el viaje
-      m.- start_lon: campo de punto flotante que contiene el valor de la longitud de la coordenada donde se inició el viaje
-      n.- end_lat: campo de punto flotante que contiene el valor de la latitud de la coordenada donde se finalizó el viaje
-      o.- end_lon: campo de punto flotante que contiene el valor de la longitud de la coordenada donde se finalizó el viaje
-      p.- start_coords: campo geométrico de tipo *point* que almacena la coordenada completa del punto donde se inició el viaje. Puede utilizarse para cruzar la información con capas de información como los perímetros de cada comuna o áreas donde el vehículo no debería transitar (sólo por mostrar un par de ejemplos de su posible aplicación a futuro)
-      q.- end_coords: campo geométrico de tipo *point* que almacena la coordenada completa del punto donde se finalizó el viaje
+    - booking_time: campo de fecha que contiene la información de la fecha y hora cuando se realizó la reserva del vehículo
+    - start_time: campo de fecha que contiene la información de la fecha y hora cuando se inició el viaje
+    - end_time: campo de fecha que contiene la información de la fecha y hora cuando se terminó el viaje
+    - status_id: campo numérico que contiene el identificador interno equivalente al estado del viaje
+    - travel_dist: campo numérico que contiene la distancia que recorrió el vehículo durante el viaje. *Nota* se debe normalizar la unidad usada (Kilómetros o metros) para evitar problemas de consistencia en la generación del resumen diario
+    - membership_id: campo numérico que contiene el identificador de membresía que posee el usuario al momento de realizar el viaje. *Nota* No lo incluí en la tabla de usuario, debido a que un usuario puede cambiar de tipo de membresía entre un viaje y otro
+    - price_amount: campo numérico (decimal) que contiene el valor del viaje sin impuestos
+    - price_tax: campo numérico (decimal) que contiene el valor de los impuestos asociados al viaje
+    - price_total: campo numérico (decimal) que contiene el valor total del viaje (incluyendo impuestos)
+    - start_lat: campo de punto flotante que contiene el valor de la latitud de la coordenada donde se inició el viaje
+    - start_lon: campo de punto flotante que contiene el valor de la longitud de la coordenada donde se inició el viaje
+    - end_lat: campo de punto flotante que contiene el valor de la latitud de la coordenada donde se finalizó el viaje
+    - end_lon: campo de punto flotante que contiene el valor de la longitud de la coordenada donde se finalizó el viaje
+    - start_coords: campo geométrico de tipo *point* que almacena la coordenada completa del punto donde se inició el viaje. Puede utilizarse para cruzar la información con capas de información como los perímetros de cada comuna o áreas donde el vehículo no debería transitar (sólo por mostrar un par de ejemplos de su posible aplicación a futuro)
+    - end_coords: campo geométrico de tipo *point* que almacena la coordenada completa del punto donde se finalizó el viaje
 
 Para la carga de los resumenes diarios, creé la tabla awto_resumen_diario que contiene 8 campos:
     a.- resumen_id: campo numérico que contiene un identificador único por día (se crea al formatear la fecha como 'YYYYMMDD'). Puede servir para ordenar más rápidamente que por la fecha
