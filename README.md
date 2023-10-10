@@ -42,4 +42,22 @@ Para asegurar la consistencia de los datos, se puede incorporar una lista de pro
   - Validar que los campos de identificadores (como el identificador de usuario, vehículo, etc) tengan valores y no vengan en blanco
 
 Si se detectan inconsistencias al realizar estas validaciones, se debe separar el registro completo y marcarlo para una revisión posterior, sin insertarlo en la tabla awto_trip hasta que se resuelvan las inconsistencias.
+
 Se puede utilizar alguna herramienta como Informatica Data Quality o IBM Databand (por mencionar sólo 2) para descubrir y luego corregir inconsistencias y errores en los datos, y así, una vez que se resuelven los errores existentes, crear un proceso de validación de integridad de los datos que revise los datos de manera periódica mediante un proceso batch que ejecute un script de análisis y envíe un reporte final con el estado de los registros (en el caso que las inconsistencias no se puedan resolver de manera automática).
+
+Para incorporar un sistema de descuentos mediante cupones, yo agregaría 2 nuevas tablas:
+  - awto_cupon: Tabla que contiene una lista de cupones de descuento. Al menos debe tener 5 campos:
+    - cupon_id: campo numérico que contiene un identificador único para el cupón
+    - valor_descuento: campo numérico (decimal) con el valor que se descontará si se utiliza este cupón
+    - fecha_inicio: campo de tipo fecha que almacena el valor del día cuando desde cuando se puede utilizar este cupón
+    - fecha_termino: campo de tipo fecha que almacena el valor del día cuando hasta cuando se puede utilizar este cupón
+    - status: campo numérico que indica si el cupón está vigente para ser utilizado
+  - awto_cupon_usuario: Tabla que contiene la relación entre la tabla awto_cupon y la tabla awto_user. Al menos debe tener 3 campos:
+    - cupon_usuario_id: campo numérico que contiene un identificador único para cada registro
+    - cupon_id: campo numérico que se obtiene desde la tabla awto_cupon
+    - user_id: campo numérico que se obtiene desde la tabla awto_user
+    - trip_id: campo numérico que se obtiene desde la tabla awto_trip y que indica el viaje en que el cupón fue utilizado por el usuario
+Además, modificaría la tabla awto_trip agregando el siguiente campo:
+  - total_discount: campo numérico (decimal) que contiene la suma de los valores de descuento de los cupones utilizados en el viaje
+
+Esta estrategia permitiría mantener ordenada la información relacionada con el uso del cupón, ya que relaciona la información del viaje con el usuario (con lo que se puede obtener la fecha cuando un usuario usó el cupón, mirando la fecha del viaje) y permite también registrar los cupones que ha ido acumulando un usuario en la tabla awto_cupon_usuario. Suponiendo que la forma de conceder cupones a los usuarios se basa en su comportamiento (cantidad de viajes totales, total de kilómetros, antigüedad del usuario, etc), se debería implementar un script automático que realice un barrido completo del historial de cada usuario y a medida que encuentre un usuario que cumple con algún criterio que le hace merecer un cupón, se va agregando la información de ese cupón para ese usuario en la tabla awto_cupon_usuario para que sea utilizado posteriormente.
